@@ -16,8 +16,9 @@ class DockingStation
         end
     end
 
-    def dock_bike (bike)
+    def dock_bike (bike,working = true)
         if !full?
+            bike.report_broken if working == false
             @dock << bike
         else
             raise "Too many bikes"

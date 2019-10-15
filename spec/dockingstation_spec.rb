@@ -56,8 +56,15 @@ describe DockingStation do
         expect(docking_station.max_dock).to eq 12
     end
 
-    it "Capacity is eequal to default when no capacity set by user" do
+    it "Capacity is equal to default when no capacity set by user" do
         docking_station = DockingStation.new
         expect(docking_station.max_dock).to eq 20
+    end
+
+    it "User can report damage on a bike" do
+        docking_station = DockingStation.new
+        bike = Bike.new
+        docking_station.dock_bike(bike,false)
+        expect(bike.working?).to eq false
     end
 end
