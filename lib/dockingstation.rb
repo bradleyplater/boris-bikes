@@ -7,7 +7,7 @@ class DockingStation
         @dock = []
     end
     def release_bike
-        if @dock.length != 0
+        if !empty?
             @dock.pop
         else
             raise "No bikes to release"
@@ -15,8 +15,8 @@ class DockingStation
     end
 
     def dock_bike (bike)
-        if @dock.length <  @max_dock
-            @dock.append(bike)
+        if !full?
+            @dock << bike
         else
             raise "Too many bikes"
         end
@@ -28,6 +28,13 @@ class DockingStation
                 print bike
             end
         end
+    end
+
+    private def full?
+        @dock.length == @max_dock
+    end
+    private def empty?
+        @dock.length == 0
     end
 
 end
