@@ -10,8 +10,15 @@ class DockingStation
     end
     def release_bike
         if !empty?
-            @dock.pop
-        else
+            @dock.each_with_index do |bike, index|
+                if bike.working?
+                    @dock.delete_at(index)
+                    return bike
+                else
+                    raise "Bike is broken"
+                end
+            end
+         else
             raise "No bikes to release"
         end
     end
