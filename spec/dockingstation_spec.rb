@@ -40,7 +40,12 @@ describe DockingStation do
     it "shows error if bike is not returned" do
         docking_station = DockingStation.new 
         docking_station.release_bike
-        expect { docking_station.release_bike }.to raise_error "Error"
+        expect { docking_station.release_bike }.to raise_error "No bikes to release"
+
     end
-     
+
+    it "shows error if max number of bikes are in dock" do
+        docking_station = DockingStation.new
+        expect { 6.times{docking_station.dock_bike(Bike.new)} }.to raise_error "Too many bikes"
+    end 
 end
