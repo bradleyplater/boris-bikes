@@ -3,8 +3,8 @@ require_relative 'Bike'
 class DockingStation
     attr_reader :dock
     def initialize
-        @max_dock = 5
-        @dock = [Bike.new]
+        @max_dock = 20
+        @dock = []
     end
     def release_bike
         if @dock.length != 0
