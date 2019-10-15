@@ -50,4 +50,14 @@ describe DockingStation do
         docking_station = DockingStation.new
         expect { 21.times{docking_station.dock_bike(Bike.new)} }.to raise_error "Too many bikes"
     end 
+
+    it "Capacity is equal to the capacity set by user" do
+        docking_station = DockingStation.new(12)
+        expect(docking_station.max_dock).to eq 12
+    end
+
+    it "Capacity is eequal to default when no capacity set by user" do
+        docking_station = DockingStation.new
+        expect(docking_station.max_dock).to eq 20
+    end
 end
