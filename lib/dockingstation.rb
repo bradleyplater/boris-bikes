@@ -3,12 +3,16 @@ require_relative 'Bike'
 class DockingStation
     attr_reader :dock
     def initialize
-       @dock = []
+       @dock = [Bike.new]
     end
     def release_bike
-       Bike.new
-         
+        if @dock.length != 0
+            @dock.pop
+        else
+            raise "Error"
+        end
     end
+
     def dock_bike (bike)
         @dock.append(bike)
     end

@@ -35,15 +35,12 @@ describe DockingStation do
             element = bike if el == bike
         end
         expect{docking_station.show_dock(bike)}.to output(element.to_s).to_stdout
-
-
+    end
         
     it "shows error if bike is not returned" do
-        docking_station = DockingStation.new
-        bike = docking_station.release_bike
-        expect(docking_station.release_bike). to 
-
-    
+        docking_station = DockingStation.new 
+        docking_station.release_bike
+        expect { docking_station.release_bike }.to raise_error "Error"
     end
      
 end
