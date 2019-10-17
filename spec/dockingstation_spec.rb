@@ -1,5 +1,5 @@
-require "DockingStation"
-require "Bike"
+require 'DockingStation'
+require 'Bike'
 
 describe DockingStation do
   subject { DockingStation.new }
