@@ -1,10 +1,10 @@
 require_relative 'Bike'
  
 class DockingStation
-    attr_reader :dock, :max_dock
-    @@DEFAULT_CAPACITY = 20
+    attr_reader :dock, :max_dock, :DEFAULT_CAPACITY
+    DEFAULT_CAPACITY = 20
 
-    def initialize(capacity = @@DEFAULT_CAPACITY)
+    def initialize(capacity = DEFAULT_CAPACITY)
         @max_dock = capacity
         @dock = []
     end
@@ -25,18 +25,14 @@ class DockingStation
 
     def dock_bike (bike,working = true)
         if !full?
-            bike.report_broken if working == false
             @dock << bike
         else
             raise "Too many bikes"
         end
-
     end
-    def show_dock (bike)
+    def show_dock
         @dock.each do |el|
-            if el == bike
-                print bike
-            end
+            return el
         end
     end
 
